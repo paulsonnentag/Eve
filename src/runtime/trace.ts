@@ -237,6 +237,7 @@ export class Tracer {
       parent = this.stack[0];
       parent.transactions[cur.id] = cur;
     } else {
+      // @ts-ignore
       let field = typeToParentField[cur.type];
       if(!parent[field]) throw new Error(`Trying to write trace field '${field}', but ${TraceFrameType[parent.type]} doesn't have it`);
       parent[field].push(cur);
